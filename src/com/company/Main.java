@@ -1,10 +1,8 @@
 package com.company;
-import com.company.model.nodes.Node;
 import com.company.view.FlowView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 
 public class Main extends Application {
 
