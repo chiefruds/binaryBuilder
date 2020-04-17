@@ -54,7 +54,7 @@ public class FlowGeneratorView {
     }
 
     private void connectAllNodes() {
-        int offsetX = 100;
+        int offsetX = 500;
         int offsetY = 100;
         int index = 0;
 
@@ -72,7 +72,7 @@ public class FlowGeneratorView {
             }
             if(index % 2 == 0) {
                 offsetY += 250;
-                offsetX = 0;
+                offsetX = 500;
             }
             offsetX += 300;
             index++;

@@ -33,6 +33,8 @@ public class FlowView {
         Pane root = new Pane(scrollPane);
 
         Label title = new Label("Voer een bestand in om de binary counter te starten!");
+        title.setMaxWidth(Double.MAX_VALUE);
+        title.setAlignment(Pos.CENTER);
         title.setStyle(getTitleStyling());
 
         Button button = setFileButton();
