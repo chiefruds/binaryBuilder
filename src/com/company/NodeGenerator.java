@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.factory.AbstractFactory;
+import com.company.factory.Architecture;
 import com.company.model.nodes.Node;
 
 import java.util.ArrayList;
@@ -10,8 +12,10 @@ import java.util.regex.Pattern;
 
 public class NodeGenerator {
 
-    public NodeGenerator() {
+    public AbstractFactory factory;
 
+    public NodeGenerator() {
+        factory = AbstractFactory.getFactory(Architecture.NODE);
     }
 
     public ArrayList<Node> getNodes(String input) {
@@ -36,8 +40,20 @@ public class NodeGenerator {
                 type = nodeType.group();
             }
 
+            Node newNode;
             if(!key.equals("") && !type.equals(""))
-                nodes.add(new Node(key, type));
+                if(type.equals("INPUT_HIGH")) {
+                    nodes.add(factory.createNode("INPUT", key)
+                    .withHighInput(true)
+                    .build());
+                } else if(type.equals("INPUT_LOW")) {
+                    nodes.add(factory.createNode("INPUT", key)
+                    .withHighInput(false)
+                    .build());
+                } else {
+                    nodes.add(factory.createNode(type, key));
+                }
+                //nodes.add(new Node(key, type));
         }
         input = input.replaceAll(nodesPattern.toString(), "");
         nodes = setNodeEdges(input, nodes);

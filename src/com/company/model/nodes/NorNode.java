@@ -3,8 +3,8 @@ package com.company.model.nodes;
 
 public class NorNode extends Node {
 
-    public NorNode(String name, String type) {
-        super(name, type);
+    public NorNode(String name) {
+        super(name);
     }
 
     @Override
