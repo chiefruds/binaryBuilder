@@ -1,19 +1,10 @@
 package com.company.view;
 
-import javafx.animation.Animation;
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
-import javafx.util.Duration;
-
-import java.util.ArrayList;
 
 public class NodeView {
     public NodeView() {
