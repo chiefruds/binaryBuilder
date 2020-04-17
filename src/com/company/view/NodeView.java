@@ -1,5 +1,6 @@
 package com.company.view;
 
+import com.company.model.nodes.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -39,9 +40,16 @@ public class NodeView {
         );
         return text;
     }
-    public Circle encircle(Text text) {
+    public Circle encircle(Node node) {
+        String className = node.getClass().getName();
         Circle circle = new Circle();
-        circle.setFill(Color.ORCHID);
+        if(className.matches(".*InputNode.*")) {
+            circle.setFill(Color.GREEN);
+        } else if(className.matches(".*ProbeNode.*")) {
+            circle.setFill(Color.GREY);
+        } else {
+            circle.setFill(Color.ORCHID);
+        }
         final double PADDING = 50;
         circle.setRadius(100);
 

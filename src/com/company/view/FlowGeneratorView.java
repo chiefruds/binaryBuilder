@@ -30,7 +30,7 @@ public class FlowGeneratorView {
         mapNodes(nodes);
         for(Node node : nodes) {
             Text text = nodeView.createText(node.getName());
-            Circle circle = nodeView.encircle(text);
+            Circle circle = nodeView.encircle(node);
             drawnNodes.add(
                     new DrawnNode(node).withCircle(circle)
                             .withText(text)
