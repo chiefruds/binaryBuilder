@@ -41,18 +41,35 @@ public class NodeView {
         return text;
     }
     public Circle encircle(Node node) {
-        String className = node.getClass().getName();
         Circle circle = new Circle();
+
+        setCircleColors(circle, node);
+
+        circle.setRadius(100);
+        return circle;
+    }
+
+    private void setCircleColors(Circle circle, Node node) {
+        String className = node.getClass().getName();
         if(className.matches(".*InputNode.*")) {
-            circle.setFill(Color.GREEN);
+            if(!node.isInputHigh()) {
+                circle.setFill(Color.GREEN);
+            } else {
+                circle.setFill(Color.RED);
+            }
+            circle.setOnMouseClicked(e -> {
+                node.setInputHigh(!node.isInputHigh());
+                if(!node.isInputHigh()) {
+                    circle.setFill(Color.GREEN);
+                } else {
+                    circle.setFill(Color.RED);
+                }
+            });
         } else if(className.matches(".*ProbeNode.*")) {
             circle.setFill(Color.GREY);
         } else {
             circle.setFill(Color.ORCHID);
         }
-        final double PADDING = 50;
-        circle.setRadius(100);
-
-        return circle;
     }
+    
 }

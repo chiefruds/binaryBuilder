@@ -13,6 +13,14 @@ public class Node {
         this.name = name;
     }
 
+    public boolean isInputHigh() {
+        return inputHigh;
+    }
+
+    public void setInputHigh(boolean inputHigh) {
+        this.inputHigh = inputHigh;
+    }
+
     public Node withName(String name) {
         this.name = name;
         return this;
