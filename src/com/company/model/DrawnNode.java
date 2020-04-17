@@ -23,10 +23,6 @@ public class DrawnNode {
         return this;
     }
 
-    public Node getNode() {
-        return node;
-    }
-
     //builder pattern
     public DrawnNode build() {
         DrawnNode node = new DrawnNode();
@@ -40,6 +36,9 @@ public class DrawnNode {
 
     }
 
+    public Node getNode() {
+        return node;
+    }
     public Text getText() {
         return text;
     }

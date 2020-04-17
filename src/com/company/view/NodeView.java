@@ -2,7 +2,6 @@ package com.company.view;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 
@@ -12,7 +11,6 @@ public class NodeView {
     }
 
     public Arrow connectNodes(Circle node1, Circle node2) {
-        Line line = new Line();
         Arrow arrow = new Arrow();
 
         // bind ends of line:
@@ -49,26 +47,4 @@ public class NodeView {
 
         return circle;
     }
-
-//    private void animateNodes(Button button, Circle circle1, Circle circle2) {
-//        TranslateTransition circle1Animation = new TranslateTransition(Duration.seconds(1), circle1);
-//        circle1Animation.setByY(150);
-//        TranslateTransition circle2Animation = new TranslateTransition(Duration.seconds(1), circle2);
-//        circle2Animation.setByX(150);
-//
-//        ParallelTransition animation = new ParallelTransition(circle1Animation, circle2Animation);
-//
-//        animation.setAutoReverse(true);
-//        animation.setCycleCount(2);
-//        button.disableProperty().bind(animation.statusProperty().isEqualTo(Animation.Status.RUNNING));
-//        button.setOnAction(e -> animation.play());
-//    }
-//
-//    private double getWidth(Text text) {
-//        new Scene(new Group(text));
-//        text.applyCss();
-//
-//        return text.getLayoutBounds().getWidth();
-//    }
-
 }

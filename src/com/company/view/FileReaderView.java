@@ -22,11 +22,13 @@ public class FileReaderView {
 
     private ArrayList<Node> nodes;
     private NodeGenerator nodeGenerator;
-    private FlowView flowView;
+    private FlowGeneratorView flowGenerator;
+    private CodeView codeView;
 
-    public FileReaderView(FlowView flowView) {
+    public FileReaderView(FlowGeneratorView flowGenerator, CodeView codeView) {
         this.nodeGenerator = new NodeGenerator();
-        this.flowView = flowView;
+        this.flowGenerator = flowGenerator;
+        this.codeView = codeView;
     }
 
     public void setFileListener(Button button, Stage stage) {
@@ -54,7 +56,7 @@ public class FileReaderView {
             );
         }
         nodes = nodeGenerator.getNodes(contentBuilder.toString());
-        flowView.replaceText(contentBuilder.toString());
-        flowView.drawFlow(nodes);
+        codeView.editText(contentBuilder.toString());
+        this.flowGenerator.generateFlow(nodes);
     }
 }
