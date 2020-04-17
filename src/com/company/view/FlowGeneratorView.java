@@ -27,6 +27,7 @@ public class FlowGeneratorView {
     }
 
     private void drawAllNodes(ArrayList<Node> nodes) {
+        mapNodes(nodes);
         for(Node node : nodes) {
             Text text = nodeView.createText(node.getName());
             Circle circle = nodeView.encircle(text);
@@ -39,6 +40,19 @@ public class FlowGeneratorView {
         }
     }
 
+    private void mapNodes(ArrayList<Node> nodes) {
+        ArrayList<Node> toMapNodes = new ArrayList<Node>();
+        for(Node node : nodes){
+            System.out.println(node.getClass().getName());
+            if(node.getClass().getName().matches(".*ProbeNode.*")) {
+
+                toMapNodes.add(node);
+            }
+        }
+        toMapNodes.forEach(nodes::remove);
+        nodes.addAll(toMapNodes);
+    }
+
     private void connectAllNodes() {
         int offsetX = 100;
         int offsetY = 100;
@@ -46,7 +60,7 @@ public class FlowGeneratorView {
 
         for(DrawnNode node : drawnNodes) {
             List<Node> edges = node.getNode().getEdges();
-            nodeView.setPosition(node.getCircle(), node.getText(), offsetX, offsetY);
+            setPositions(node, offsetX, offsetY);
             if((index + 1) < drawnNodes.size() && edges != null) {
                 for(Node edge : edges) {
                     for(DrawnNode n: drawnNodes) {
@@ -56,12 +70,25 @@ public class FlowGeneratorView {
                     }
                 }
             }
-            if(index % 5 == 0) {
+            if(index % 2 == 0) {
                 offsetY += 250;
                 offsetX = 0;
             }
             offsetX += 300;
             index++;
         }
+    }
+
+    private void setPositions(DrawnNode node, int offsetX, int offsetY) {
+        String className = node.getNode().getClass().getName();
+        //System.out.println(className);
+        if(className.matches(".*InputNode.*")) {
+            System.out.println("matches input!");
+            offsetY = 100;
+            offsetX += 100;
+        } else if (className.matches(".*ProbeNode.*")) {
+            offsetY += 200;
+        }
+        nodeView.setPosition(node.getCircle(), node.getText(), offsetX, offsetY);
     }
 }
